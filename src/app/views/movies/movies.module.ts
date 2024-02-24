@@ -4,6 +4,10 @@ import { MoviesComponent } from './movies.component';
 import { AddMovieComponent } from './components/add-movie/add-movie.component';
 import { AllMoviesComponent } from './components/all-movies/all-movies.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
+import { DetailsMovieComponent } from './components/details-movie/details-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { MoviesRoutingModule } from './movies-routing.module';
 
 
 
@@ -12,10 +16,14 @@ import { EditMovieComponent } from './components/edit-movie/edit-movie.component
     MoviesComponent,
     AddMovieComponent,
     AllMoviesComponent,
-    EditMovieComponent
+    EditMovieComponent,
+    DetailsMovieComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MoviesRoutingModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class MoviesModule { }
