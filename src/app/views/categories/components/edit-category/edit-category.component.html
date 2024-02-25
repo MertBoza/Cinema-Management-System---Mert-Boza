@@ -1,1 +1,9 @@
-<p>edit-category works!</p>
+<div class="edit-user-form">
+    <form [formGroup]="editCategoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" formControlName="name" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!editCategoryForm.valid">Update User</button>
+    </form>
+</div>

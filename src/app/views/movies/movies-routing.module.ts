@@ -11,7 +11,7 @@ const routes: Routes = [
       {path:'all-movies',component:AllMoviesComponent},
       {path:'add-movies',component:AddMovieComponent},
       {path:'edit-movie/:id',component:EditMovieComponent},
-      {path:'movie-details/:id',component:DetailsMovieComponent}
+      {path:'details-movie/:id',component:DetailsMovieComponent}
       ]
     }
   ];

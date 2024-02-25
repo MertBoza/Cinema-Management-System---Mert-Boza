@@ -7,8 +7,7 @@ import { delay } from "rxjs/operators";
   })
   export class AuthService {
     private validCredentials = [
-      { email: 'user1@example.com', password: 'password1' },
-      { email: 'user2@example.com', password: 'password2' },
+      { email: 'username@email.com', password: 'yourpassword' }
     ];
   
     login(credentials: { email: string; password: string }): Observable<boolean> {

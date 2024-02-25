@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<div class="add-movie-form">
+    <form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" formControlName="title" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" formControlName="lastname" required>
+        </div>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" formControlName="title" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Status :</label>
+            <select id="status" formControlName="status" required>
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Create User</button>
+    </form>
+</div>

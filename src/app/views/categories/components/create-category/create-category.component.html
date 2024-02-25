@@ -1,1 +1,9 @@
-<p>create-category works!</p>
+<div class="create-category-form">
+    <form [formGroup]="createCategoryForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="name">Name of the category :</label>
+            <input type="text" id="name" formControlName="name" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!createCategoryForm.valid">Create Category</button>
+    </form>
+</div>
