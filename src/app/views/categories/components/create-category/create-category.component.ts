@@ -30,7 +30,7 @@ export class CreateCategoryComponent implements OnInit {
         this.categoryService.addCategories(this.createCategoryForm.value);
         this.createCategoryForm.reset();
         window.alert('Category created. Click OK to see all Categories.');
-        this.router.navigateByUrl('/categories/add-categories');
+        this.router.navigateByUrl('/categories/all-categories');
       }catch(error: any){
         if (error.message === 'A category with these details already exists'){
           window.alert('A category with these details already exists. Please  check your input.');

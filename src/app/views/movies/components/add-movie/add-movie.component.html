@@ -5,20 +5,19 @@
             <input type="text" id="title" formControlName="title" required>
         </div>
         <div class="form-group">
-            <label for="lastname">Last Name:</label>
-            <input type="text" id="lastname" formControlName="lastname" required>
+            <label for="director">Director</label>
+            <input type="text" id="director" formControlName="director" required>
         </div>
         <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" formControlName="title" required>
+            <label for="releasedate">Release Date</label>
+            <input type="text" id="releasedate" formControlName="releasedate" required>
         </div>
         <div class="form-group">
-            <label for="status">Status :</label>
-            <select id="status" formControlName="status" required>
-                <option value="Active">Active</option>
-                <option value="Inactive">Inactive</option>
+            <label for="category">Category</label>
+            <select id="category" formControlName="category" required>
+                <option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Create User</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Add Movie</button>
     </form>
 </div>

@@ -1,12 +1,13 @@
 .table{
     padding: 10px;
     border-radius: 10px;
-    
 }
 th {
     background: #198754;
     color: #fff;
     height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 .delete-modal{
     background-color: #fff;
@@ -39,4 +40,7 @@ th {
     align-items: center;
     justify-content: center;
     height: 200px;
+}
+.th1{
+    text-align: right;
 }

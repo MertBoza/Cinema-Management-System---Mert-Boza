@@ -4,6 +4,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th class="th1">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -12,14 +13,13 @@
                  {{item.name}}
             </td>
             <td class="text-right">
-              <a [routerLink]="'/categories/edit-category' + item.id" [queryParams]="{ categoryId: item.id}">
+              <a [routerLink]="'/categories/edit-category/' + item.id" [queryParams]="{categoryId: item.id}">
                  <i class="fa fa-pencil green p-2 pointer"></i>
               </a>
              <i class="fa fa-trash text-danger p-2 pointer" (click)="deleteCategory(item)"></i>
-            
             </td>
-        </tr>
-       
+          </tr>
+        
         
         </tbody>
     </table>

@@ -30,8 +30,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   fillInputs(){
-    this.editCategoryForm.get('name').setValue(this.categoryDetails.name);
-
+    this.editCategoryForm.get('name').setValue(this.categoryDetails.name)
   }
 
   onSubmit(){
@@ -45,7 +44,7 @@ export class EditCategoryComponent implements OnInit {
         this.categoriesService.updateCategory(payload);
         this.editCategoryForm.reset();
         window.alert('Category name changed. Click OK to see all categories.');
-        this.router.navigateByUrl('/categories/edit-category');
+        this.router.navigateByUrl('/categories/all-categories');
       }catch (error:any){
         console.error('Error changing category name ', error);
         window.alert('Failed to change category name. Please try again.');
