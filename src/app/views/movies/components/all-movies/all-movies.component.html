@@ -1,41 +1,48 @@
 <div class="main-content">
-    <button [routerLink]="['/movies/add-movies']"  type="button" class="create-new-button">Add new</button>
-    <table class="table align-middle mb-0 bg-white">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Director</th>
-            <th>Release Date</th>
-            <th>Category</th>
-            <th class="text-right">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of movieList">
-            <td>
-              {{item.title}}
-            </td>
-            <td>
-              {{item.director}}
-            </td>
-            <td>
-              {{item.releasedate}}
-            </td>
-            <td>
-              {{getCategoryName(item.categoryId) }}
-            </td>
-            <td class="text-right">
-              <a [routerLink]="'/movies/edit-movie/' + item.id" [queryParams]="{ movieId: item.id}">
-                <i class="fa fa-pencil green p-2 pointer"></i>
-              </a>
-              <a [routerLink]="'/movies/details-movie/' + item.id" [queryParams]="{ movieId: item.id}">
-                <i class="fa fa-eye green p-2 pointer"></i>
-             </a>
-             <i class="fa fa-trash text-danger p-2 pointer" (click)="deleteMovie(item)"></i>
-            </td>
-          </tr>
-        </tbody>
-    </table>
+    
+  <button [routerLink]="['/movies/add-movies']"  type="button" class="create-new-button">Add new movie</button>
+  <table class="table align-middle mb-0 bg-white">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Director</th>
+          <th>Release Date</th>
+          <th>Category</th>
+          <th class="text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of movieList">
+          <td>
+               {{item?.title ? item.title : 'no item'}}
+          </td>
+          <td>
+            {{item?.director}}
+          </td>
+          <td>
+            {{item?.releasedate}}
+          </td>
+          <td>
+              {{item?.assignedCategory}}
+          </td>
+
+          
+          <td class="text-right">
+            <a [routerLink]="'/movies/edit-movie/' + item.id" [queryParams]="{ movieId: item.id}">
+               <i class="fa fa-pencil green p-2 pointer"></i>
+            </a>
+            <a [routerLink]="'/movies/details-movie/' + item.id" [queryParams]="{ movieId: item.id}">
+              <i class="fa fa-eye green p-2 pointer"></i>
+           </a>
+           <i class="fa fa-trash text-danger p-2 pointer" (click)="deleteMovie(item)"></i>
+          </td>
+          
+        </tr>
+      
+     
+      
+      </tbody>
+  </table>
 </div>
 
 
@@ -44,16 +51,16 @@
 
 
 <div *ngIf="deleteMovieModal" class="delete-modal">
-    <div class="delete-modal-header">
-     <h3 class="delete-modal-header-title" >Delete Movie</h3>
-    </div>
-    <div class="delete-modal-content">
-      <h4>  Are you sure you want to proceed with the deletion of <b> {{clickedMovieData.firstname + ' ' + clickedMovieData.lastname }}</b>?</h4> 
-    </div>
-    <div class="delete-modal-footer">
-        <button type="button" class="delete-button bg-danger" (click)="deleteMovieFromTable(clickedMovieData.id)">Delete</button>
-        <button type="button" class="create-new-button" (click)="closeDeleteMovieModal()">Cancel</button>
-   
-    </div>
+  <div class="delete-modal-header">
+   <h3 class="delete-modal-header-title" >Delete Movie</h3>
+  </div>
+  <div class="delete-modal-content">
+    <h4>  Are you sure you want to proceed with the deletion of <b> {{clickedMovieData.title}}</b>?</h4> 
+  </div>
+  <div class="delete-modal-footer">
+      <button type="button" class="delete-button bg-danger" (click)="deleteMovieFromTable(clickedMovieData.id)">Delete</button>
+      <button type="button" class="create-new-button" (click)="closeDeleteMovieModal()">Cancel</button>
+ 
+  </div>
 
 </div>

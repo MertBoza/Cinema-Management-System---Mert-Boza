@@ -1,1 +1,52 @@
-<p>edit-movie works!</p>
+<div class="edit-movie-form">
+    <form [formGroup]="editMovieForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" formControlName="title" required>
+           
+            <div *ngIf="editMovieForm.get('title').touched && editMovieForm.get('title').errors">
+                <small class="text-danger" *ngIf="editMovieForm.get('title').errors['required']">
+                    Title is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="director">Director:</label>
+            <input type="text" id="director" formControlName="director" required>
+           
+            <div *ngIf="editMovieForm.get('director').touched && editMovieForm.get('director').errors">
+                <small class="text-danger" *ngIf="editMovieForm.get('director').errors['required']">
+                    Director is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="releasedate">Release Date:</label>
+            <input type="text" id="releasedate" formControlName="releasedate" required>
+           
+            <div *ngIf="editMovieForm.get('releasedate').touched && editMovieForm.get('releasedate').errors">
+                <small class="text-danger" *ngIf="editMovieForm.get('releasedate').errors['required']">
+                    Release Date is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="assignedCategory">Choose category:</label>
+            <select id="assignedCategory" formControlName="assignedCategory" required>
+                <option value="">Select a Category</option>
+                <option *ngFor="let item of categoryList" [value]="item.name">{{ item.name }}</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" class="text-area" formControlName="description" rows="3" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!editMovieForm.valid">edit Movie</button>
+    </form>
+</div>

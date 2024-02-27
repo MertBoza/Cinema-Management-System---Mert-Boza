@@ -1,7 +1,33 @@
-<div class="card" style="width:400px">
-    <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+<nav class="navbar navbar-expand-sm navbar-dark bg-success" aria-label="Third navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Cinema Management System</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample03">
+      <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/homepage']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/movies/all-movies']">Movies</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/categories/all-categories']">Categories</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="card" style="width:400px" *ngFor="let item of movieList">
+    <img class="card-img-top" src="" alt="Card image">
     <div class="card-body">
-      <h4 class="card-title">John Doe</h4>
+      <h4 class="card-title">{{item?.title ? item.title : 'no item'}}</h4>
       <p class="card-text">Some example text.</p>
       <a href="#" class="btn btn-primary">See Profile</a>
     </div>

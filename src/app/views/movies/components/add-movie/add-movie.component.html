@@ -1,23 +1,52 @@
 <div class="add-movie-form">
     <form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title:</label>
             <input type="text" id="title" formControlName="title" required>
+           
+            <div *ngIf="addMovieForm.get('title').touched && addMovieForm.get('title').errors">
+                <small class="text-danger" *ngIf="addMovieForm.get('title').errors['required']">
+                    Title is required.
+                </small>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="director">Director</label>
+            <label for="director">Director:</label>
             <input type="text" id="director" formControlName="director" required>
+           
+            <div *ngIf="addMovieForm.get('director').touched && addMovieForm.get('director').errors">
+                <small class="text-danger" *ngIf="addMovieForm.get('director').errors['required']">
+                    Director is required.
+                </small>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="releasedate">Release Date</label>
+            <label for="releasedate">Release Date:</label>
             <input type="text" id="releasedate" formControlName="releasedate" required>
+           
+            <div *ngIf="addMovieForm.get('releasedate').touched && addMovieForm.get('releasedate').errors">
+                <small class="text-danger" *ngIf="addMovieForm.get('releasedate').errors['required']">
+                    Release Date is required.
+                </small>
+            </div>
         </div>
+
         <div class="form-group">
-            <label for="category">Category</label>
-            <select id="category" formControlName="category" required>
-                <option *ngFor="let category of categoryList" [value]="category.id">{{category.name}}</option>
+            <label for="assignedCategory">Choose category:</label>
+            <select id="assignedCategory" formControlName="assignedCategory" required>
+                <option value="">Select a Category</option>
+                <option *ngFor="let item of categoryList" [value]="item.name">{{ item.name }}</option>
             </select>
         </div>
+
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" class="text-area" formControlName="description" rows="3" required></textarea>
+        </div>
+
         <button type="submit" class="btn btn-primary" [disabled]="!addMovieForm.valid">Add Movie</button>
     </form>
 </div>

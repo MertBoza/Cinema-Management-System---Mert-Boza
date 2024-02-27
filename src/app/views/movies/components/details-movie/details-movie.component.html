@@ -1,1 +1,41 @@
-<p>details-movie works!</p>
+
+
+
+<div class="container-fluid">
+    <div class="header">
+        <h1>{{movieDetails?.title + ' ' + 'details'}}</h1>
+    </div>
+    <div class="movie-details">
+ 
+        <ng-container *ngIf="movieDetails.title">
+            <div>
+                <label for="title"><b>Title: </b></label>
+                <p>{{movieDetails?.title}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="movieDetails.director">
+            <div>
+                <label for="director"><b>Director: </b></label>
+                <p>{{movieDetails?.director}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="movieDetails.releasedate">
+            <div>
+                <label for="releasedate"><b>Release Date: </b></label>
+                <p>{{movieDetails?.releasedate}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="movieDetails.assignedCategory">
+            <div>
+                <label for="assignedCategory"><b>Category: </b></label>
+                <p>{{movieDetails?.assignedCategory}}</p>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="movieDetails.description">
+            <div>
+                <label for="description"><b>Description: </b></label>
+                <p>{{movieDetails.description}}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

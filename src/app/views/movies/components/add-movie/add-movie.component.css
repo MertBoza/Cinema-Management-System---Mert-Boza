@@ -34,3 +34,8 @@
     background-color: #ccc;
     border-color: #ccc;
 }
+.text-area{
+    width: 100%!important;
+    border-radius: 10px;
+    border-color: #ccc;
+  }

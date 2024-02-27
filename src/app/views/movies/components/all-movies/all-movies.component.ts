@@ -8,36 +8,20 @@ import { CategoriesService } from 'src/app/views/categories/categories-service';
   styleUrls: ['./all-movies.component.css']
 })
 export class AllMoviesComponent implements OnInit {
+
   movieList:any = []
-  categoryList: any[] = [];
   deleteMovieModal:boolean = false
   clickedMovieData:any
-  constructor(
-    private movieService:MoviesService,
-    private categoryService: CategoriesService
-  ) { }
+  constructor(private moviesService:MoviesService) { }
 
   ngOnInit(): void {
-    this.fetchCategories()
     this.fetchMovies()
   }
 
-  fetchCategories() {
-    this.categoryList = this.categoryService.getCategories();
-    console.log('Category List:', this.categoryList);
-  }
-
-  fetchMovies() {
-    this.movieList = this.movieService.getMovies()
-  }
-
-  deleteMovieFromTable(movieId: number) {
-    this.movieService.deleteMovie(movieId);
-    this.fetchMovies();
-    window.alert('Movie deleted, Click ok to see all movies')
-    this.deleteMovieModal = false
-  }
   
+  fetchMovies() {
+    this.movieList = this.moviesService.getMovies();
+  }
  
 
   deleteMovie(item:any){
@@ -45,12 +29,16 @@ export class AllMoviesComponent implements OnInit {
     this.deleteMovieModal = true
   }
 
+  deleteMovieFromTable(movieId: number) {
+    this.moviesService.deleteMovie(movieId);
+    this.fetchMovies();
+    window.alert('Movie deleted, Click ok to see all movies')
+    this.deleteMovieModal = false
+  }
+
   closeDeleteMovieModal(){
     this.deleteMovieModal = false
   }
 
-  getCategoryName(categoryId: number): string {
-    const category = this.categoryList.find(cat => cat.id === categoryId);
-    return category ? category.name : '';
-  }
+
 }
