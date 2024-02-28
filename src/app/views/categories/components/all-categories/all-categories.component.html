@@ -19,14 +19,9 @@
              <i class="fa fa-trash text-danger p-2 pointer" (click)="deleteCategory(item)"></i>
             </td>
           </tr>
-        
-        
         </tbody>
     </table>
 </div>
-
-
-
 
 
 
@@ -38,8 +33,7 @@
       <h4>  Are you sure you want to proceed with the deletion of {{clickedCategoryData.name + ' ' }} category ?</h4> 
     </div>
     <div class="delete-modal-footer">
-        <button type="button" class="delete-button bg-danger" (click)="deleteCategoryFromTable(clickedCategoryData.id)">Delete</button>
-        <button type="button" class="create-new-button" (click)="closeDeleteCategoryModal()">Cancel</button>
+      <button type="button" class="delete-button bg-danger" (click)="deleteCategoryFromTable(clickedCategoryData.id)">Delete</button>
+      <button type="button" class="create-new-button" (click)="closeDeleteCategoryModal()">Cancel</button>
     </div>
-
 </div>

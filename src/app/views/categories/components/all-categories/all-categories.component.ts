@@ -27,8 +27,6 @@ export class AllCategoriesComponent implements OnInit {
     this.deleteCategoryModal = false
   }
 
- 
-
   deleteCategory(item:any){
     this.clickedCategoryData = item
     this.deleteCategoryModal = true

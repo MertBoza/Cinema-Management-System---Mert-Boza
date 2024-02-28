@@ -12,12 +12,22 @@ export class AllMoviesComponent implements OnInit {
   movieList:any = []
   deleteMovieModal:boolean = false
   clickedMovieData:any
-  constructor(private moviesService:MoviesService) { }
+  categories: string[] = [];
+  selectedCategory: string | null = null;
+  searchTerm: string = '';
+  
+  constructor(
+    private moviesService:MoviesService, private categoriesService:CategoriesService
+  ) { }
 
   ngOnInit(): void {
     this.fetchMovies()
+    this.fetchCategories()
   }
-
+  fetchCategories() {
+    const categoriesObjects = this.categoriesService.getCategories();
+    this.categories = categoriesObjects.map(category => category.name);
+  }
   
   fetchMovies() {
     this.movieList = this.moviesService.getMovies();
@@ -39,6 +49,23 @@ export class AllMoviesComponent implements OnInit {
   closeDeleteMovieModal(){
     this.deleteMovieModal = false
   }
-
+  filterMoviesByCategory() {
+    if (this.selectedCategory) {
+      this.movieList = this.moviesService.getMovies().filter(movie => movie.assignedCategory === this.selectedCategory);
+    } else {
+      this.fetchMovies();
+    }
+  }
+  searchMovies() {
+    // Filter movies based on search term
+    if (this.searchTerm.trim() !== '') {
+      this.movieList = this.moviesService.getMovies().filter(movie =>
+        movie.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        movie.assignedCategory.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.fetchMovies();
+    }
+  }
 
 }

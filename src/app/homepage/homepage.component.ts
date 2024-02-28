@@ -9,18 +9,23 @@ import { MoviesService } from '../views/movies/movies-service';
 })
 export class HomepageComponent implements OnInit {
   movieList: any = []
-  clickedMovieData:any
+  categoryList: any = []
   constructor( 
     private categoryService:CategoriesService,
     private movieService:MoviesService
   ) { }
 
   ngOnInit(): void {
-    this.fetchMovies
+    this.fetchMovies()
+    this.fetchCategories()
   }
 
   fetchMovies() {
     this.movieList = this.movieService.getMovies();
+  }
+
+  fetchCategories(){
+    this.categoryList = this.categoryService.getCategories();
   }
 
 }

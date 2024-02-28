@@ -1,6 +1,16 @@
 <div class="main-content">
+  <div class="filter-container">
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter" [(ngModel)]="selectedCategory" (change)="filterMoviesByCategory()">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
     
   <button [routerLink]="['/movies/add-movies']"  type="button" class="create-new-button">Add new movie</button>
+  <div class="search-container">
+    <input type="text" placeholder="Search movies" [(ngModel)]="searchTerm" (input)="searchMovies()">
+  </div>
   <table class="table align-middle mb-0 bg-white">
       <thead>
         <tr>
